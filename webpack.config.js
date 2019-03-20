@@ -6,7 +6,6 @@ module.exports = env => {
     let prodConfig = {};
 
     if (env && env.production) {
-        console.log('Production: ', env.production);
         prodConfig = {
             optimization: {
                 minimizer: [new UglifyJsPlugin()],
