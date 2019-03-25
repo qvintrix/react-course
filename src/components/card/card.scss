@@ -1,0 +1,21 @@
+.card {
+	width: 33%;
+	text-align: center;
+
+	&__description {
+		text-transform: uppercase;
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&__release-year {
+		border: 1px solid #afaaaa;
+		padding: 1px 5px;
+	}
+
+	&__genre {
+		text-align: left;
+		color: gray;
+		margin-top: 5px;
+	}
+}

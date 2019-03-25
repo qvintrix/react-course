@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
-
-import './app.css';
+import AppHeader from '../app-header';
+import AppFooter from '../app-footer';
+import './app.scss';
+import Results from "../results";
+import Card from "../card";
 
 class App extends Component {
     state = {
@@ -9,8 +12,13 @@ class App extends Component {
 
     render() {
         return (
-            <div>
-                Hello {this.state.name}
+            <div className="react-app">
+                <AppHeader/>
+                <Results/>
+                <div className="react-app__body-content">
+                    <Card/>
+                </div>
+                <AppFooter/>
             </div>
         );
     }
