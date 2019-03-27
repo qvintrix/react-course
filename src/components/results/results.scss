@@ -3,8 +3,6 @@
 	background-color: #eae8e8;
 
 	&__container {
-		max-width: 1150px;
-		margin: 0 auto;
 		display: flex;
 		justify-content: space-between;
 		font-weight: 600;
@@ -14,5 +12,9 @@
 		display: flex;
 		min-width: 250px;
 		justify-content: space-between;
+	}
+
+	&__active {
+		color: #ff9c9c;
 	}
 }

@@ -1,0 +1,39 @@
+.film-detail {
+	background-image: url("../../assets/bg.png");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	padding-bottom: 25px;
+
+	&-container {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.film-overview {
+		padding: 10px 50px;
+		color: #fff;
+
+		&__title {
+			color: #ff9c9c;
+			font-size: 25px;
+			font-weight: bold;
+			letter-spacing: 1.5px;
+		}
+
+		&__sub-title {
+			margin: 5px 0;
+			color: #ffffffc7;
+		}
+
+		&__duration {
+			span:last-child {
+				margin-left: 50px;
+			}
+		}
+
+		&__description {
+			color: #ffffffc7;
+			margin-top: 25px;
+		}
+	}
+}
