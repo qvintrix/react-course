@@ -1,10 +1,10 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-import App from './app';
+import AppHeader from './app-header';
 
-describe('App component', () => {
+describe('AppHeader component', () => {
     it('renders', () => {
-        const wrapper = shallow(<App/>);
+        const wrapper = shallow(<AppHeader/>);
 
         expect(wrapper.exists()).toBe(true);
     })

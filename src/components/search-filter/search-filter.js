@@ -8,8 +8,6 @@ class SearchFilter extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        console.log(this.inputValue.current.value);
-
     };
 
     render() {

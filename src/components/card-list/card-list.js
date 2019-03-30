@@ -17,4 +17,8 @@ const CardList = ({ films }) => {
     );
 };
 
+CardList.defaultProps = {
+    films: []
+};
+
 export default CardList;

@@ -9,10 +9,17 @@ module.exports = {
     coverageDirectory: 'coverage',
 
     // An array of file extensions your modules use
-    moduleFileExtensions: ['js', 'json', 'jsx'],
+    moduleFileExtensions: ['js', 'json', 'jsx', 'scss'],
+
+    moduleNameMapper: {
+        "^.+\\.(css|less|scss|png)$": "babel-jest"
+    },
 
     // The test environment that will be used for testing
     testEnvironment: 'jsdom',
+
+    // The paths to modules that run some code to configure or set up the testing environment before each test
+    setupFiles: ['<rootDir>/enzyme.config.js'],
 
     // The glob patterns Jest uses to detect test files
     testMatch: ['**/__tests__/**/*.js?(x)', '**/?(*.)+(spec|test).js?(x)'],
