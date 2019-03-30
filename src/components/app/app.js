@@ -32,7 +32,8 @@ const films = [
 class App extends Component {
     state = {
         films: films,
-        sortBy: 'release date'
+        sortBy: 'release date',
+        searchByFilter: 'TITLE'
     };
 
     onSortedBy = (filter) => {
@@ -41,12 +42,20 @@ class App extends Component {
         })
     };
 
+    onSearchBy = (filter) => {
+        this.setState({
+            searchByFilter: filter
+        })
+    };
+
     render() {
         return (
             <ErrorBoundry>
                 <div className="react-app">
                     <AppHeader/>
-                    <SearchFilter/>
+                    <SearchFilter
+                        searchByFilter={this.state.searchByFilter}
+                        onSearchBy={this.onSearchBy}/>
                     <Results onSortedBy={this.onSortedBy} sortBy={this.state.sortBy}/>
                     <CardList films={this.state.films}/>
                     <AppFooter/>

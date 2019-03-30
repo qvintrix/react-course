@@ -3,25 +3,18 @@ import './search-filter.scss';
 import Layout from "../layout";
 
 class SearchFilter extends Component {
-    state = { value: '' };
 
-
-    onSearchBy = (event) => {
-        event.preventDefault();
-        console.log(event.currentTarget.value)
-        // this.setState({ value: event.target.value });
-    };
-
-    handleChange = (event) => {
-        console.log('A name was submitted: ' + event.target.value);
-    };
+    inputValue = React.createRef();
 
     handleSubmit = (event) => {
-        console.log(event);
-        // console.log('A name was submitted: ' + this.state.value);
+        event.preventDefault();
+        console.log(this.inputValue.current.value);
+
     };
 
     render() {
+        const { onSearchBy, searchByFilter } = this.props;
+
         return (
             <div className="search-filter">
                 <Layout>
@@ -31,18 +24,19 @@ class SearchFilter extends Component {
                                 <div className="search-form__title">FIND YOUR MOVIE</div>
                                 <input className="search-form__input-field"
                                     type="text"
-                                    value={this.state.value}
-                                    onChange={this.handleChange}/>
+                                    ref={this.inputValue}/>
                             </label>
                             <div className="search-form__control-btns">
                                 <div className="search-form__filter filter-container">
                                     <span>SEARCH BY</span>
-                                    <button className="filter-container__button"
-                                        onClick={(this.onSearchBy)}>
+                                    <button
+                                        className={`filter-container__button ${searchByFilter === 'TITLE' ? 'filter-container__active' : ''}`}
+                                        onClick={() => onSearchBy('TITLE')}>
                                         TITLE
                                     </button>
-                                    <button className="filter-container__button"
-                                        onClick={this.onSearchBy}>
+                                    <button
+                                        className={`filter-container__button ${searchByFilter === 'GENRE' ? 'filter-container__active' : ''}`}
+                                        onClick={() => onSearchBy('GENRE')}>
                                         GENRE
                                     </button>
                                 </div>
@@ -54,6 +48,6 @@ class SearchFilter extends Component {
             </div>
         );
     }
-};
+}
 
 export default SearchFilter;
