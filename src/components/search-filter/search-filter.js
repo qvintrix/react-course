@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import './search-filter.scss';
 import Layout from "../layout";
+import './search-filter.scss';
 
 class SearchFilter extends Component {
 

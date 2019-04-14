@@ -2,39 +2,15 @@ import React, {Component} from 'react';
 import AppHeader from '../app-header';
 import SearchFilter from '../search-filter';
 import AppFooter from '../app-footer';
-import './app.scss';
 import Results from "../results";
 import FilmDetailHeader from "../film-detail-header";
 import CardList from "../card-list";
-import ErrorBoundry from '../error-boundry';
-
-const films = [
-    {
-        label: 'Kill Bill, vol 1'
-    },
-    {
-        label: 'Kill Bill, vol 2'
-    },
-    {
-        label: 'Kill Bill, vol 3'
-    },
-    {
-        label: 'Kill Bill, vol 4'
-    },
-    {
-        label: 'Kill Bill, vol 5'
-    },
-    {
-        label: 'Kill Bill, vol 6'
-    }
-];
+import {connect} from 'react-redux'
+import {fetchFilms} from "../../actions";
+import './app.scss';
 
 class App extends Component {
-    state = {
-        films: films,
-        sortBy: 'release date',
-        searchByFilter: 'TITLE'
-    };
+    state = {};
 
     onSortedBy = (filter) => {
         this.setState({
@@ -48,30 +24,47 @@ class App extends Component {
         })
     };
 
+    componentDidMount() {
+        this.props.fetchFilms();
+    }
+
     render() {
         return (
-            <ErrorBoundry>
-                <div className="react-app">
-                    <AppHeader/>
-                    <SearchFilter
-                        searchByFilter={this.state.searchByFilter}
-                        onSearchBy={this.onSearchBy}/>
-                    <Results onSortedBy={this.onSortedBy} sortBy={this.state.sortBy}/>
-                    <CardList films={this.state.films}/>
-                    <AppFooter/>
+            <div className="react-app">
+                <AppHeader/>
+                <SearchFilter
+                    searchByFilter={this.props.filmFilter.searchByFilter}
+                    onSearchBy={this.onSearchBy}/>
+                <Results onSortedBy={this.onSortedBy} sortBy={this.props.filmFilter.sortBy}/>
+                <CardList films={this.props.films}/>
+                <AppFooter/>
 
 
-                    <hr/>
-                    <AppHeader/>
-                    <FilmDetailHeader/>
-                    <Results onSortedBy={this.onSortedBy} sortBy={this.state.sortBy}/>
-                    <CardList films={this.state.films}/>
-                    <AppFooter/>
-                </div>
-            </ErrorBoundry>
+                <hr/>
+                <AppHeader/>
+                <FilmDetailHeader/>
+                <Results onSortedBy={this.onSortedBy} sortBy={this.props.filmFilter.sortBy}/>
+                <CardList films={this.props.films}/>
+                <AppFooter/>
+            </div>
         );
     }
 
 }
 
-export default App;
+const mapStateToProps = state => {
+    return {
+        films: state.films,
+        filmFilter: state.filmFilter
+    }
+};
+
+const mapDispatchToProps = dispatch => ({
+    fetchFilms: () => dispatch(fetchFilms())
+});
+
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(App);

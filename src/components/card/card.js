@@ -1,16 +1,23 @@
 import React from 'react';
 import './card.scss';
 
-const Card = ({ label }) => {
+const Card = ({ film }) => {
+    const d = new Date(film.release_date);
+    const year = d.getFullYear();
     return (
         <div className="card">
-            <img src="./src/assets/bg.png"/>
+            <img src={film.poster_path}
+                className="card__pic"/>
             <div className="card__description">
-                {label}
-                <span className="card__release-year">2004</span>
+                {film.title}
+                <span className="card__release-year">{year}</span>
             </div>
             <div className="card__genre">
-                Action & Adventure
+                {
+                    film.genres.map(genre => {
+                        return (<span key={genre} className="card__genre-item">{genre}</span>)
+                    })
+                }
             </div>
         </div>
     );

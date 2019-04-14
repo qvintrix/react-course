@@ -1,6 +1,6 @@
 import React from 'react';
-import './results.scss';
 import Layout from "../layout";
+import './results.scss';
 
 const Results = ({ onSortedBy, sortBy }) => {
     return (

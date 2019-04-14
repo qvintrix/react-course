@@ -1,5 +1,4 @@
 import React from 'react';
-
 import './error-indicator.scss';
 import icon from './death-star.png';
 

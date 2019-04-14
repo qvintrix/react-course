@@ -1,6 +1,6 @@
 import React from 'react';
-import './app-footer.scss';
 import Layout from "../layout";
+import './app-footer.scss';
 
 const AppFooter = () => {
 

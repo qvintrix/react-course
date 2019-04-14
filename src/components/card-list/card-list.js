@@ -1,15 +1,16 @@
 import React from 'react';
-import './card-list.scss';
 import Layout from "../layout";
 import Card from "../card";
+import './card-list.scss';
 
-const CardList = ({ films }) => {
+const CardList = (props) => {
+    console.log(props.films)
     return (
         <Layout>
             <div className="card-list">
                 {
-                    films.map(film => {
-                        return <Card key={film.label} film={film}/>
+                    props.films.films.map(film => {
+                        return <Card key={film.id} film={film}/>
                     })
                 }
             </div>

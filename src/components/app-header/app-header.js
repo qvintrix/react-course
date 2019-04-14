@@ -1,6 +1,6 @@
 import React from 'react';
-import './app-header.scss';
 import Layout from "../layout";
+import './app-header.scss';
 
 const AppHeader = () => {
     return (
