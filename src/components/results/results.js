@@ -2,13 +2,14 @@ import React from 'react';
 import Layout from "../layout";
 import './results.scss';
 
-const Results = ({ onSortedBy, sortBy }) => {
+const Results = ({ onSortedBy, sortBy, count }) => {
+    
     return (
         <div className="results">
             <Layout>
                 <div className="results__container">
                     <div className="results__found-items">
-                        6 movies found
+                        {count} movies found
                     </div>
                     <div className="results__filter">
                         <div>Sort by</div>

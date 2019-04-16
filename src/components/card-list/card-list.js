@@ -1,16 +1,16 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 import Layout from "../layout";
 import Card from "../card";
 import './card-list.scss';
 
-const CardList = (props) => {
-    console.log(props.films)
+const CardList = ({ films }) => {
     return (
         <Layout>
             <div className="card-list">
                 {
-                    props.films.films.map(film => {
-                        return <Card key={film.id} film={film}/>
+                    films.map(film => {
+                        return <Link to={`/film/${film.id}`} key={film.id}><Card film={film}/></Link>
                     })
                 }
             </div>

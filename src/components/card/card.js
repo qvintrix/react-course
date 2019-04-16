@@ -4,6 +4,7 @@ import './card.scss';
 const Card = ({ film }) => {
     const d = new Date(film.release_date);
     const year = d.getFullYear();
+
     return (
         <div className="card">
             <img src={film.poster_path}

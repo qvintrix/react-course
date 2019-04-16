@@ -1,29 +1,33 @@
 import React from 'react';
-import './film-detail-header.scss';
 import Layout from "../layout";
+import './film-detail-header.scss';
 
-const FilmDetailHeader = () => {
+const FilmDetailHeader = ({ film }) => {
+    const d = new Date(film.release_date);
+    const year = d.getFullYear();
 
     return (
         <div className="film-detail">
             <Layout>
                 <div className="film-detail-container">
                     <div>
-                        <img src="./src/assets/bg.png"/>
+                        <img src={film.poster_path} width="200px"/>
                     </div>
                     <div className="film-detail__description film-overview">
-                        <div className="film-overview__title">Pulp Fiction</div>
-                        <div className="film-overview__sub-title">Oscar-winning Movies</div>
+                        <div className="film-overview__title">{film.title}</div>
+                        <div className="film-overview__genre">
+                            {/*{*/}
+                            {/*film.genres.map(genre => {*/}
+                            {/*return (<span key={genre} className="film-overview__genre-item">{genre}</span>)*/}
+                            {/*})*/}
+                            {/*}*/}
+                        </div>
                         <div className="film-overview__duration">
-                            <span>1994</span>
+                            <span>{year}</span>
                             <span>154min</span>
                         </div>
                         <div className="film-overview__description">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus eius quia quidem?
-                            Accusantium
-                            commodi corporis deserunt, dolor dolores error esse eveniet labore nisi officiis porro,
-                            quasi
-                            ratione repellat suscipit, tempore?
+                            {film.overview}
                         </div>
                     </div>
                 </div>

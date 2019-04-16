@@ -6,7 +6,6 @@
 
 	&-container {
 		display: flex;
-		justify-content: space-between;
 	}
 
 	.film-overview {
@@ -20,9 +19,14 @@
 			letter-spacing: 1.5px;
 		}
 
-		&__sub-title {
+		&__genre {
+			text-align: left;
 			margin: 5px 0;
 			color: #ffffffc7;
+
+			&-item {
+				margin: 0 5px;
+			}
 		}
 
 		&__duration {

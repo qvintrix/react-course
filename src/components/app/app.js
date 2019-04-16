@@ -1,10 +1,13 @@
 import React, {Component} from 'react';
+import {Route, Switch} from 'react-router-dom';
 import AppHeader from '../app-header';
 import SearchFilter from '../search-filter';
 import AppFooter from '../app-footer';
 import Results from "../results";
 import FilmDetailHeader from "../film-detail-header";
 import CardList from "../card-list";
+import HomePage from "../pages/home-page";
+import FilmDetailPage from "../pages/film-detail";
 import {connect} from 'react-redux'
 import {fetchFilms} from "../../actions";
 import './app.scss';
@@ -18,33 +21,25 @@ class App extends Component {
         })
     };
 
-    onSearchBy = (filter) => {
-        this.setState({
-            searchByFilter: filter
-        })
-    };
-
     componentDidMount() {
         this.props.fetchFilms();
     }
 
     render() {
+        const { films, filmFilter } = this.props;
+        
         return (
             <div className="react-app">
                 <AppHeader/>
-                <SearchFilter
-                    searchByFilter={this.props.filmFilter.searchByFilter}
-                    onSearchBy={this.onSearchBy}/>
-                <Results onSortedBy={this.onSortedBy} sortBy={this.props.filmFilter.sortBy}/>
-                <CardList films={this.props.films}/>
-                <AppFooter/>
-
-
-                <hr/>
-                <AppHeader/>
-                <FilmDetailHeader/>
-                <Results onSortedBy={this.onSortedBy} sortBy={this.props.filmFilter.sortBy}/>
-                <CardList films={this.props.films}/>
+                <Switch>
+                    <Route path="/" component={HomePage} exact></Route>
+                    <Route path="/film/:id" component={FilmDetailPage}></Route>
+                </Switch>
+                <Results onSortedBy={this.onSortedBy}
+                    sortBy={filmFilter.sortBy}
+                    count={films.films.length}
+                />
+                <CardList films={films.films}/>
                 <AppFooter/>
             </div>
         );
