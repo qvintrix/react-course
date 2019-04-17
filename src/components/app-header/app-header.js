@@ -3,7 +3,9 @@ import Layout from "../layout";
 import './app-header.scss';
 import {Link} from "react-router-dom";
 
-const AppHeader = () => {
+const AppHeader = ({ isFilmDetailPage }) => {
+    const isSearchBtnAppear = !(Object.keys(isFilmDetailPage).length == 0 && isFilmDetailPage.constructor === Object);
+
     return (
         <div className="app-header">
             <Layout>
@@ -13,7 +15,9 @@ const AppHeader = () => {
                             netflixroulette
                         </Link>
                     </div>
-                    {true && <button className="app-header__search-btn">Search</button>}
+                    <Link to="/">
+                        {isSearchBtnAppear && <span className="app-header__search-btn">Search</span>}
+                    </Link>
                 </div>
             </Layout>
         </div>

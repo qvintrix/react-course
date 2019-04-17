@@ -5,6 +5,7 @@ import './film-detail-header.scss';
 const FilmDetailHeader = ({ film }) => {
     const d = new Date(film.release_date);
     const year = d.getFullYear();
+    // const genres = Array.from(film.genres);
 
     return (
         <div className="film-detail">
@@ -17,9 +18,9 @@ const FilmDetailHeader = ({ film }) => {
                         <div className="film-overview__title">{film.title}</div>
                         <div className="film-overview__genre">
                             {/*{*/}
-                            {/*film.genres.map(genre => {*/}
-                            {/*return (<span key={genre} className="film-overview__genre-item">{genre}</span>)*/}
-                            {/*})*/}
+                                {/*genres.map(genre => {*/}
+                                    {/*return (<span key={genre} className="film-overview__genre-item">{genre}</span>)*/}
+                                {/*})*/}
                             {/*}*/}
                         </div>
                         <div className="film-overview__duration">

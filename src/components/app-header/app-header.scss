@@ -9,7 +9,7 @@
 		justify-content: space-between;
 	}
 
-	&__title a{
+	&__title a {
 		color: #ff9c9c;
 		font-size: 20px;
 	}
@@ -23,5 +23,7 @@
 		text-transform: uppercase;
 		letter-spacing: 0.3px;
 		cursor: pointer;
+		background-color: white;
+		padding: 5px;
 	}
 }

@@ -6,18 +6,14 @@ class SearchFilter extends Component {
 
     inputValue = React.createRef();
 
-    handleSubmit = (event) => {
-        event.preventDefault();
-    };
-
     render() {
-        const { onSearchBy, searchByFilter } = this.props;
+        const { onSearchBy, onSubmit, searchByFilter } = this.props;
 
         return (
             <div className="search-filter">
                 <Layout>
                     <div className="search-filter__form-container search-form">
-                        <form onSubmit={this.handleSubmit}>
+                        <form onSubmit={() => onSubmit(this.inputValue.current.value)}>
                             <label>
                                 <div className="search-form__title">FIND YOUR MOVIE</div>
                                 <input className="search-form__input-field"
@@ -28,13 +24,13 @@ class SearchFilter extends Component {
                                 <div className="search-form__filter filter-container">
                                     <span>SEARCH BY</span>
                                     <button
-                                        className={`filter-container__button ${searchByFilter === 'TITLE' ? 'filter-container__active' : ''}`}
-                                        onClick={() => onSearchBy('TITLE')}>
+                                        className={`filter-container__button ${searchByFilter === 'title' ? 'filter-container__active' : ''}`}
+                                        onClick={() => onSearchBy('title')}>
                                         TITLE
                                     </button>
                                     <button
-                                        className={`filter-container__button ${searchByFilter === 'GENRE' ? 'filter-container__active' : ''}`}
-                                        onClick={() => onSearchBy('GENRE')}>
+                                        className={`filter-container__button ${searchByFilter === 'genre' ? 'filter-container__active' : ''}`}
+                                        onClick={() => onSearchBy('genre')}>
                                         GENRE
                                     </button>
                                 </div>
