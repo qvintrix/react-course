@@ -13,7 +13,7 @@ class SearchFilter extends Component {
             <div className="search-filter">
                 <Layout>
                     <div className="search-filter__form-container search-form">
-                        <form onSubmit={() => onSubmit(this.inputValue.current.value)}>
+                        <form onSubmit={() => onSubmit(this.inputValue['current']['value'])}>
                             <label>
                                 <div className="search-form__title">FIND YOUR MOVIE</div>
                                 <input className="search-form__input-field"

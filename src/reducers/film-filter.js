@@ -1,4 +1,4 @@
-import {CHANGE_SEARCH_TYPE, CHANGE_SORT_TYPE, CHANGE_INPUT_SEARCH_VALUE} from "../actions";
+import {CHANGE_SEARCH_TYPE, CHANGE_SORT_TYPE} from "../actions";
 
 const initialState = {
     sortBy: 'release date',

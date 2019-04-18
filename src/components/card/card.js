@@ -2,12 +2,15 @@ import React from 'react';
 import './card.scss';
 
 const Card = ({ film }) => {
-    const d = new Date(film.release_date);
-    const year = d.getFullYear();
+    let year;
+    if (film) {
+        const d = new Date(film['release_date']);
+        year = d.getFullYear();
+    }
 
-    return (
+    const cardContent = (
         <div className="card">
-            <img src={film.poster_path}
+            <img src={film['poster_path']}
                 className="card__pic"/>
             <div className="card__description">
                 {film.title}
@@ -21,7 +24,8 @@ const Card = ({ film }) => {
                 }
             </div>
         </div>
-    );
+    )
+    return film && cardContent;
 };
 
 export default Card;

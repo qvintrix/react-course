@@ -1,17 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
+import {PersistGate} from 'redux-persist/integration/react'
 import App from './components/app';
-import store from './store';
+import {store, persistor} from './store';
 import ErrorBoundry from './components/error-boundry';
-import {BrowserRouter as Router} from "react-router-dom";
+import {HashRouter} from 'react-router-dom'
 
 ReactDOM.render(
     <Provider store={store}>
         <ErrorBoundry>
-            <Router>
-                <App/>
-            </Router>
+            <HashRouter>
+                <PersistGate loading={null} persistor={persistor}>
+                    <App/>
+                </PersistGate>
+            </HashRouter>
         </ErrorBoundry>
     </Provider>,
     document.getElementById('root'));

@@ -3,35 +3,42 @@ import Layout from "../layout";
 import './film-detail-header.scss';
 
 const FilmDetailHeader = ({ film }) => {
-    const d = new Date(film.release_date);
-    const year = d.getFullYear();
-    // const genres = Array.from(film.genres);
+    let year;
+    if (film) {
+        const d = new Date(String(film['release_date']));
+        year = d.getFullYear();
+    }
 
+    const filmDetailContent = (
+        <div className="film-detail-container">
+            <div>
+                <img src={film.poster_path} width="200px"/>
+            </div>
+            <div className="film-detail__description film-overview">
+                <div className="film-overview__title">{film.title}</div>
+                <div className="film-overview__genre">
+                    {
+                        film && film.genres && film.genres.map(genre => {
+                            return (<span key={genre} className="film-overview__genre-item">{genre}</span>)
+                        })
+                    }
+                </div>
+                <div className="film-overview__duration">
+                    <span>{film.release_date && year}</span>
+                    <span>154min</span>
+                </div>
+                <div className="film-overview__description">
+                    {film.overview}
+                </div>
+            </div>
+        </div>
+    )
     return (
         <div className="film-detail">
             <Layout>
-                <div className="film-detail-container">
-                    <div>
-                        <img src={film.poster_path} width="200px"/>
-                    </div>
-                    <div className="film-detail__description film-overview">
-                        <div className="film-overview__title">{film.title}</div>
-                        <div className="film-overview__genre">
-                            {/*{*/}
-                                {/*genres.map(genre => {*/}
-                                    {/*return (<span key={genre} className="film-overview__genre-item">{genre}</span>)*/}
-                                {/*})*/}
-                            {/*}*/}
-                        </div>
-                        <div className="film-overview__duration">
-                            <span>{year}</span>
-                            <span>154min</span>
-                        </div>
-                        <div className="film-overview__description">
-                            {film.overview}
-                        </div>
-                    </div>
-                </div>
+                {
+                    film && filmDetailContent
+                }
             </Layout>
         </div>
     );

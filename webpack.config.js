@@ -15,6 +15,11 @@ module.exports = env => {
 
     return {
         ...prodConfig,
+        devServer: {
+            contentBase: path.join(__dirname, 'dist'),
+            historyApiFallback: true,
+            hot: true
+        },
         output: {
             path: path.resolve('dist'),
             filename: 'bundled.js'

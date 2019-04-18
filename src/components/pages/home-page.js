@@ -4,6 +4,8 @@ import {connect} from "react-redux";
 import AppHeader from "../app-header";
 import {changeTypeSearch, changeTypeSort, fetchFilms} from "../../actions";
 import Results from "../results";
+import CardList from "../card-list";
+import AppFooter from "../app-footer";
 
 class HomePage extends Component {
 
@@ -17,7 +19,7 @@ class HomePage extends Component {
 
     onSortedBy = (filter) => {
         this.props.changeTypeSort(filter);
-    }
+    };
 
     onSubmit = (value) => {
         event.preventDefault();
@@ -33,10 +35,10 @@ class HomePage extends Component {
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-        const { filmFilter } = this.props;
+        const { filmFilter, films } = this.props;
 
         return (filmFilter.searchByFilter !== nextProps.filmFilter.searchByFilter) ||
-            (filmFilter.sortBy !== nextProps.filmFilter.sortBy);
+            (filmFilter.sortBy !== nextProps.filmFilter.sortBy) || (films.films !== nextProps.films.films);
     }
 
     render() {
@@ -51,6 +53,8 @@ class HomePage extends Component {
                     sortBy={this.props.filmFilter.sortBy}
                     count={this.props.films.films.length}
                     isHomePage/>
+                <CardList films={this.props.films.films}/>
+                <AppFooter/>
             </Fragment>
         )
     }

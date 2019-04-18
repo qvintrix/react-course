@@ -4,7 +4,10 @@ import './app-header.scss';
 import {Link} from "react-router-dom";
 
 const AppHeader = ({ isFilmDetailPage }) => {
-    const isSearchBtnAppear = !(Object.keys(isFilmDetailPage).length == 0 && isFilmDetailPage.constructor === Object);
+    let isSearchBtnAppear;
+    if (isFilmDetailPage) {
+        isSearchBtnAppear = !(Object.keys(isFilmDetailPage).length == 0 && isFilmDetailPage.constructor === Object);
+    }
 
     return (
         <div className="app-header">
