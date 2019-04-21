@@ -10,7 +10,17 @@ import AppFooter from "../app-footer";
 class HomePage extends Component {
 
     componentDidMount() {
-        this.props.fetchFilms();
+        let queryIndex;
+        let query;
+        const { search } = this.props.match.params;
+        const { searchByFilter, sortBy } = this.props.filmFilter;
+
+        if (search) {
+            queryIndex = search.indexOf(' ') + 1;
+            query = search.slice(queryIndex);
+        }
+
+        this.props.fetchFilms(searchByFilter, sortBy, query);
     }
 
     onSearchBy = (filter) => {
@@ -27,6 +37,7 @@ class HomePage extends Component {
             return;
         }
         this.getFilms(value);
+        this.props.history.push(`/search/Search ${value}`)
     };
 
     getFilms(value) {

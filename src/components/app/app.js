@@ -9,6 +9,7 @@ const ErrorPage = () => <h1 className="error-title">404 Error: page not found</h
 const App = () => (
     <Switch>
         <Route path="/" component={HomePage} exact></Route>
+        <Route path="/search/:search" component={HomePage} exact></Route>
         <Route path="/film/:id" component={FilmDetailPage} exact></Route>
         <Route path="*" component={ErrorPage}/>
     </Switch>
