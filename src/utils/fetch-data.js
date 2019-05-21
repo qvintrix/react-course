@@ -1,3 +1,5 @@
+import fetch from 'isomorphic-fetch';
+
 const baseUrl = 'https://reactjs-cdp.herokuapp.com/';
 
 export const getFilms = (searchFilter, sortFilter, inputValue = '') => {
