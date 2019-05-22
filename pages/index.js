@@ -1,18 +1,20 @@
 import React, {Component, Fragment} from 'react';
-import SearchFilter from "../search-filter";
 import {connect} from "react-redux";
-import AppHeader from "../app-header";
-import {changeTypeSearch, changeTypeSort, fetchFilms} from "../../actions";
-import Results from "../results";
-import CardList from "../card-list";
-import AppFooter from "../app-footer";
+import Router from 'next/router';
+import SearchFilter from "../components/search-filter";
+import AppHeader from "../components/app-header";
+import {changeTypeSearch, changeTypeSort, fetchFilms} from "../actions";
+import Results from "../components/results";
+import CardList from "../components/card-list";
+import AppFooter from "../components/app-footer";
 
 class HomePage extends Component {
 
     componentDidMount() {
         let queryIndex;
         let query;
-        const { search } = this.props.match.params;
+        // console.log(this.props)
+        const { search } = this.props.pageProps;
         const { searchByFilter, sortBy } = this.props.filmFilter;
 
         if (search) {
@@ -37,7 +39,8 @@ class HomePage extends Component {
             return;
         }
         this.getFilms(value);
-        this.props.history.push(`/search/Search ${value}`)
+        // this.props.history.push(`/search/Search ${value}`)
+        Router.push('/', `/search/Search ${value}`);
     };
 
     getFilms(value) {
@@ -55,7 +58,7 @@ class HomePage extends Component {
     render() {
         return (
             <Fragment>
-                <AppHeader isFilmDetailPage={this.props.match.params}/>
+                <AppHeader isFilmDetailPage={this.props.pageProps}/>
                 <SearchFilter
                     searchByFilter={this.props.filmFilter.searchByFilter}
                     onSearchBy={this.onSearchBy}

@@ -1,22 +1,22 @@
 import React, {Component, Fragment} from 'react';
-import FilmDetailHeader from "../film-detail-header";
+import FilmDetailHeader from "../components/film-detail-header";
 import {connect} from "react-redux";
-import {fetchFilm} from "../../actions";
-import AppHeader from "../app-header";
-import Results from "../results";
-import CardList from "../card-list";
-import AppFooter from "../app-footer";
+import {fetchFilm} from "../actions";
+import AppHeader from "../components/app-header";
+import Results from "../components/results";
+import CardList from "../components/card-list";
+import AppFooter from "../components/app-footer";
 
 class FilmDetailPage extends Component {
+
     componentDidMount() {
-        const { id } = this.props.match.params;
+        const { id } = this.props.router.query;
         this.props.fetchFilm(id)
     }
 
     componentDidUpdate(prevProps) {
-        const { id } = this.props.match.params;
-
-        if (id !== prevProps.match.params['id']) {
+        const { id } = this.props.router.query;
+        if (id !== prevProps.router.query['id']) {
             this.props.fetchFilm(id)
         }
     }
@@ -24,7 +24,7 @@ class FilmDetailPage extends Component {
     render() {
         return (
             <Fragment>
-                <AppHeader isFilmDetailPage={this.props.match.params}/>
+                <AppHeader isFilmDetailPage={this.props.router.query}/>
                 <FilmDetailHeader film={this.props.film.film}/>
                 <Results/>
                 <CardList films={this.props.films.films}/>
