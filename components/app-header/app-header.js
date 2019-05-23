@@ -1,15 +1,16 @@
 import React from 'react';
-import Layout from "../layout";
-import './app-header.scss';
+import PropTypes from 'prop-types';
 import Link from 'next/link';
+import Layout from '../layout';
+import './app-header.scss';
 
 const AppHeader = ({ isFilmDetailPage }) => {
-    let isSearchBtnAppear;
-    if (isFilmDetailPage) {
-        isSearchBtnAppear = !(Object.keys(isFilmDetailPage).length == 0 && isFilmDetailPage.constructor === Object);
-    }
+  let isSearchBtnAppear;
+  if (isFilmDetailPage) {
+    isSearchBtnAppear = !(Object.keys(isFilmDetailPage).length == 0 && isFilmDetailPage.constructor === Object);
+  }
 
-    return (
+  return (
         <div className="app-header">
             <Layout>
                 <div className="app-header__container">
@@ -24,7 +25,11 @@ const AppHeader = ({ isFilmDetailPage }) => {
                 </div>
             </Layout>
         </div>
-    );
+  );
 };
 
 export default AppHeader;
+
+AppHeader.propTypes = {
+  isFilmDetailPage: PropTypes.object,
+};

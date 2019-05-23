@@ -1,9 +1,8 @@
-import React from 'react'
-import ErrorIndicator from "../components/error-indicator";
+import React from 'react';
+import ErrorIndicator from '../components/error-indicator';
 
 export default class Error extends React.Component {
-
-    render() {
-        return <ErrorIndicator/>
-    }
+  render() {
+    return <ErrorIndicator/>;
+  }
 }

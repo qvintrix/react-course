@@ -1,14 +1,7 @@
-import {createStore, applyMiddleware} from 'redux';
-import reducer from './reducers';
+import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
-import storage from 'redux-persist/lib/storage'
-
-const persistConfig = {
-    key: 'root',
-    storage: storage,
-    blacklist: ['navigation']
-};
+import reducer from './reducers';
 
 const store = createStore(reducer, applyMiddleware(thunkMiddleware));
 
-export {store}
+export { store };

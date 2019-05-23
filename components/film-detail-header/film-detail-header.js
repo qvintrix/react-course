@@ -1,15 +1,16 @@
 import React from 'react';
-import Layout from "../layout";
+import PropTypes from 'prop-types';
+import Layout from '../layout';
 import './film-detail-header.scss';
 
 const FilmDetailHeader = ({ film }) => {
-    let year;
-    if (film) {
-        const d = new Date(String(film['release_date']));
-        year = d.getFullYear();
-    }
+  let year;
+  if (film) {
+    const d = new Date(String(film.release_date));
+    year = d.getFullYear();
+  }
 
-    const filmDetailContent = (
+  const filmDetailContent = (
         <div className="film-detail-container">
             <div>
                 <img src={film.poster_path} width="200px"/>
@@ -18,9 +19,8 @@ const FilmDetailHeader = ({ film }) => {
                 <div className="film-overview__title">{film.title}</div>
                 <div className="film-overview__genre">
                     {
-                        film && film.genres && film.genres.map(genre => {
-                            return (<span key={genre} className="film-overview__genre-item">{genre}</span>)
-                        })
+                        film && film.genres && film.genres.map(genre => (
+                            <span key={genre} className="film-overview__genre-item">{genre}</span>))
                     }
                 </div>
                 <div className="film-overview__duration">
@@ -32,8 +32,8 @@ const FilmDetailHeader = ({ film }) => {
                 </div>
             </div>
         </div>
-    )
-    return (
+  );
+  return (
         <div className="film-detail">
             <Layout>
                 {
@@ -41,7 +41,11 @@ const FilmDetailHeader = ({ film }) => {
                 }
             </Layout>
         </div>
-    );
+  );
 };
 
 export default FilmDetailHeader;
+
+FilmDetailHeader.propTypes = {
+  film: PropTypes.object,
+};

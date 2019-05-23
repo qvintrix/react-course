@@ -1,9 +1,12 @@
-import React, {Fragment} from 'react';
-import Layout from "../layout";
+import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
+import Layout from '../layout';
 import './results.scss';
 
-const Results = ({ onSortedBy, sortBy, count, isHomePage }) => {
-    const results = (
+const Results = ({
+  onSortedBy, sortBy, count, isHomePage,
+}) => {
+  const results = (
         <Fragment>
             <div className="results__found-items">
                 {count} movies found
@@ -20,15 +23,15 @@ const Results = ({ onSortedBy, sortBy, count, isHomePage }) => {
                 </div>
             </div>
         </Fragment>
-    );
+  );
 
-    const detailsInfo = (
+  const detailsInfo = (
         <div className="results__films-by">
             Films By Drama genre:
         </div>
-    );
+  );
 
-    return (
+  return (
         <div className="results">
             <Layout>
                 <div className="results__container">
@@ -38,7 +41,14 @@ const Results = ({ onSortedBy, sortBy, count, isHomePage }) => {
                 </div>
             </Layout>
         </div>
-    );
+  );
 };
 
 export default Results;
+
+Results.propTypes = {
+  onSortedBy: PropTypes.func,
+  sortBy: PropTypes.string,
+  count: PropTypes.number,
+  isHomePage: PropTypes.bool,
+};

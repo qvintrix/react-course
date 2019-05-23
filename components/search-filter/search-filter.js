@@ -1,19 +1,19 @@
-import React, {Component} from 'react';
-import Layout from "../layout";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import Layout from '../layout';
 import './search-filter.scss';
 
 class SearchFilter extends Component {
-
     inputValue = React.createRef();
 
     render() {
-        const { onSearchBy, onSubmit, searchByFilter } = this.props;
+      const { onSearchBy, onSubmit, searchByFilter } = this.props;
 
-        return (
+      return (
             <div className="search-filter">
                 <Layout>
                     <div className="search-filter__form-container search-form">
-                        <form onSubmit={() => onSubmit(this.inputValue['current']['value'])}>
+                        <form onSubmit={() => onSubmit(this.inputValue.current.value)}>
                             <label>
                                 <div className="search-form__title">FIND YOUR MOVIE</div>
                                 <input className="search-form__input-field"
@@ -40,8 +40,14 @@ class SearchFilter extends Component {
                     </div>
                 </Layout>
             </div>
-        );
+      );
     }
 }
 
 export default SearchFilter;
+
+SearchFilter.propTypes = {
+  onSearchBy: PropTypes.func,
+  onSubmit: PropTypes.func,
+  searchByFilter: PropTypes.string,
+};
