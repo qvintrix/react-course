@@ -1,27 +1,30 @@
 import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
 import FilmDetailHeader from '../components/film-detail-header';
-import {fetchFilm} from '../actions';
+import {fetchFilm, fetchFilms} from '../actions';
 import AppHeader from '../components/app-header';
 import Results from '../components/results';
 import CardList from '../components/card-list';
 import AppFooter from '../components/app-footer';
 
-let cacheId;
-
 class FilmDetailPage extends Component {
+
     componentDidMount() {
         const { id } = this.props.router.query;
-        cacheId = id;
+        const { searchByFilter, sortBy } = this.props.filmFilter;
+
         this.props.fetchFilm(id);
+        if (!this.props.films.films.length) {
+            this.props.fetchFilms(searchByFilter, sortBy);
+        }
     }
 
-    componentDidUpdate(prevProps) {
-        console.log(this.props.router.query);
-        const id = prevProps.router.query.id;
+    componentDidUpdate() {
+        // console.log(this.props.router.query.id);
+        // console.log(this.props.film.film.id);
 
-        // if (cacheId !== id) {
-        //     this.props.fetchFilm(id);
+        // if (Number(this.props.film.film.id) !== Number(this.props.router.query.id)) {
+        //     this.props.fetchFilm(this.props.router.query.id);
         // }
     }
 
@@ -46,6 +49,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     fetchFilm: id => dispatch(fetchFilm(id)),
+    fetchFilms: ((searchFilter, sortFilter, inputValue) => dispatch(fetchFilms(searchFilter, sortFilter, inputValue))),
 });
 
 export default connect(
