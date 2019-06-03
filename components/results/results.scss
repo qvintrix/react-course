@@ -1,20 +1,4 @@
 .results {
-	padding: 10px;
-	background-color: #eae8e8;
-
-	&__container {
-		display: flex;
-		justify-content: space-between;
-		font-weight: 600;
-	}
-
-	&__filter {
-		display: flex;
-		min-width: 250px;
-		justify-content: space-between;
-		cursor: pointer;
-	}
-
 	&__active {
 		color: #ff9c9c;
 	}

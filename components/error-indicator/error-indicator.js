@@ -1,13 +1,13 @@
 import React from 'react';
-import './error-indicator.scss';
+import {Wrapper, Title} from './styles';
 
 const ErrorIndicator = () => (
-    <div className="error-indicator">
-        <span className="boom">BOOM!</span>
+    <Wrapper>
+        <Title>BOOM!</Title>
         <span>
         something has gone terribly wrong
       </span>
-    </div>
+    </Wrapper>
 );
 
 export default ErrorIndicator;

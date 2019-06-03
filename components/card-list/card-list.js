@@ -3,11 +3,11 @@ import Link from 'next/link';
 import PropTypes from 'prop-types';
 import Layout from '../layout';
 import Card from '../card';
-import './card-list.scss';
+import {Wrapper} from './styles';
 
 const CardList = ({ films }) => (
     <Layout>
-        <div className="card-list">
+        <Wrapper>
             {
                 films.map(film => <Link
                     href={{ pathname: '/film', query: { id: film.id } }} as={`/film/${film.id}`}
@@ -15,16 +15,16 @@ const CardList = ({ films }) => (
                     <a><Card film={film}/></a>
                 </Link>)
             }
-        </div>
+        </Wrapper>
     </Layout>
 );
 
 CardList.defaultProps = {
-  films: [],
+    films: [],
 };
 
 export default CardList;
 
 CardList.propTypes = {
-  films: PropTypes.array,
+    films: PropTypes.array,
 };

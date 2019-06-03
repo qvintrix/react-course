@@ -1,34 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './card.scss';
+import {Wrapper, Image, Description, ReleaseYear, Genre, GenreItem} from './styles';
 
 const Card = ({ film }) => {
-  let year;
-  if (film) {
-    const d = new Date(film.release_date);
-    year = d.getFullYear();
-  }
+    let year;
+    if (film) {
+        const d = new Date(film.release_date);
+        year = d.getFullYear();
+    }
 
-  const cardContent = (
-        <div className="card">
-            <img src={film.poster_path}
-                className="card__pic"/>
-            <div className="card__description">
+    const cardContent = (
+        <Wrapper>
+            <Image src={film.poster_path}/>
+            <Description>
                 {film.title}
-                <span className="card__release-year">{year}</span>
-            </div>
-            <div className="card__genre">
+                <ReleaseYear>{year}</ReleaseYear>
+            </Description>
+            <Genre>
                 {
-                    film.genres.map(genre => (<span key={genre} className="card__genre-item">{genre}</span>))
+                    film.genres.map(genre => (<GenreItem key={genre}>{genre}</GenreItem>))
                 }
-            </div>
-        </div>
-  );
-  return film && cardContent;
+            </Genre>
+        </Wrapper>
+    );
+    return film && cardContent;
 };
 
 export default Card;
 
 Card.propTypes = {
-  film: PropTypes.object,
+    film: PropTypes.object,
 };

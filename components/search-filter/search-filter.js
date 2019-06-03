@@ -1,53 +1,54 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Layout from '../layout';
+import {Wrapper, SubmitBtn, Title, Genre, ControlBtns, SearchFormTitle, InputField} from './styles';
 import './search-filter.scss';
 
 class SearchFilter extends Component {
     inputValue = React.createRef();
 
     render() {
-      const { onSearchBy, onSubmit, searchByFilter } = this.props;
+        const { onSearchBy, onSubmit, searchByFilter } = this.props;
 
-      return (
-            <div className="search-filter">
+        return (
+            <Wrapper>
                 <Layout>
                     <div className="search-filter__form-container search-form">
                         <form onSubmit={() => onSubmit(this.inputValue.current.value)}>
                             <label>
-                                <div className="search-form__title">FIND YOUR MOVIE</div>
-                                <input className="search-form__input-field"
+                                <SearchFormTitle>FIND YOUR MOVIE</SearchFormTitle>
+                                <InputField
                                     type="text"
                                     ref={this.inputValue}/>
                             </label>
-                            <div className="search-form__control-btns">
+                            <ControlBtns>
                                 <div className="search-form__filter filter-container">
                                     <span>SEARCH BY</span>
-                                    <button
-                                        className={`filter-container__button ${searchByFilter === 'title' ? 'filter-container__active' : ''}`}
+                                    <Title
+                                        searchByFilter
                                         onClick={() => onSearchBy('title')}>
                                         TITLE
-                                    </button>
-                                    <button
-                                        className={`filter-container__button ${searchByFilter === 'genre' ? 'filter-container__active' : ''}`}
+                                    </Title>
+                                    <Genre
+                                        searchByFilter
                                         onClick={() => onSearchBy('genre')}>
                                         GENRE
-                                    </button>
+                                    </Genre>
                                 </div>
-                                <input type="submit" value="Search" className="search-form__submit-btn"/>
-                            </div>
+                                <SubmitBtn type="submit" value="Search"/>
+                            </ControlBtns>
                         </form>
                     </div>
                 </Layout>
-            </div>
-      );
+            </Wrapper>
+        );
     }
 }
 
 export default SearchFilter;
 
 SearchFilter.propTypes = {
-  onSearchBy: PropTypes.func,
-  onSubmit: PropTypes.func,
-  searchByFilter: PropTypes.string,
+    onSearchBy: PropTypes.func,
+    onSubmit: PropTypes.func,
+    searchByFilter: PropTypes.string,
 };

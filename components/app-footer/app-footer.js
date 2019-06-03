@@ -1,15 +1,15 @@
 import React from 'react';
 import Layout from '../layout';
-import './app-footer.scss';
+import {Wrapper, Title} from './styles';
 
 const AppFooter = () => (
-    <div className="app-footer">
+    <Wrapper>
         <Layout>
-            <div className="app-footer__title">
+            <Title>
                 netflixroulette
-            </div>
+            </Title>
         </Layout>
-    </div>
+    </Wrapper>
 );
 
 export default AppFooter;
