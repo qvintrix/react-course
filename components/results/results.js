@@ -2,7 +2,6 @@ import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import Layout from '../layout';
 import {Wrapper, Filter, Container, ReleaseDate, Rating} from './styles';
-import './results.scss';
 
 const Results = ({
                      onSortedBy, sortBy, count, isHomePage,

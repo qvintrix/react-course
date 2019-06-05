@@ -1,8 +1,17 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Layout from '../layout';
-import {Wrapper, SubmitBtn, Title, Genre, ControlBtns, SearchFormTitle, InputField} from './styles';
-import './search-filter.scss';
+import {
+    Wrapper,
+    SubmitBtn,
+    Title,
+    Genre,
+    ControlBtns,
+    SearchFormTitle,
+    InputField,
+    Filter,
+    FormContainer
+} from './styles';
 
 class SearchFilter extends Component {
     inputValue = React.createRef();
@@ -13,7 +22,7 @@ class SearchFilter extends Component {
         return (
             <Wrapper>
                 <Layout>
-                    <div className="search-filter__form-container search-form">
+                    <FormContainer>
                         <form onSubmit={() => onSubmit(this.inputValue.current.value)}>
                             <label>
                                 <SearchFormTitle>FIND YOUR MOVIE</SearchFormTitle>
@@ -22,7 +31,7 @@ class SearchFilter extends Component {
                                     ref={this.inputValue}/>
                             </label>
                             <ControlBtns>
-                                <div className="search-form__filter filter-container">
+                                <Filter>
                                     <span>SEARCH BY</span>
                                     <Title
                                         searchByFilter
@@ -34,11 +43,11 @@ class SearchFilter extends Component {
                                         onClick={() => onSearchBy('genre')}>
                                         GENRE
                                     </Genre>
-                                </div>
+                                </Filter>
                                 <SubmitBtn type="submit" value="Search"/>
                             </ControlBtns>
                         </form>
-                    </div>
+                    </FormContainer>
                 </Layout>
             </Wrapper>
         );

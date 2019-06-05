@@ -37,6 +37,14 @@ const SearchFormTitle = styled.div`
   font-weight: bold;
 `;
 
+const Filter = styled.div`
+  color: #fff;
+`;
+
+const FormContainer = styled.div`
+  padding: 35px;
+`;
+
 const InputField = styled.input`
   width: 100%;
   height: 25px;
@@ -56,4 +64,4 @@ const SubmitBtn = styled.input`
   cursor: pointer;
 `;
 
-export {Wrapper, SubmitBtn, Title, Genre, ControlBtns, SearchFormTitle, InputField};
+export {Wrapper, SubmitBtn, Title, Genre, ControlBtns, SearchFormTitle, InputField, Filter, FormContainer};
